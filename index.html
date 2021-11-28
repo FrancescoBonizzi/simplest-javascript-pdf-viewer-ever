@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>Simplest PDF viewer ever</title>
+
+    <link href="style.css" rel="stylesheet" />
+    <script src="https://unpkg.com/pdfjs-dist@latest/build/pdf.min.js"></script>
+
+</head>
+
+<body>
+
+    <h1 style="display: none" id="error">An error occurred</h1>
+    <div id="loader" class="lds-ring">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div id="pages-container">
+
+    </div>
+
+    <script src="pdfViewer.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function () {
+
+            const errorContainer = document.getElementById('error');
+            const pdfViewerContainer = document.getElementById('pages-container');
+            const loader = document.getElementById('loader');
+
+            const pdfFileUrl = "sample-pdf-with-images.pdf";
+            renderPdf(
+                url = pdfFileUrl,
+                onPdfLoaded = () => loader.classList.add('hidden-with-animation'),
+                onError = error => {
+                    loader.style.display = 'none';
+                    console.error(error);
+                    errorContainer.style.display = 'block';
+                    pdfViewerContainer.style.display = 'none';
+                    errorContainer.innerText = error.message;
+                });
+
+        }, false);
+
+    </script>
+
+</body>
+
+</html>
