@@ -1,4 +1,4 @@
-# A very simple PDF viewer in javascript
+# A very simple Javascript PDF viewer
 
 You can find a description and a tutorial to make this simple PDF viewer in Javascript here (link is coming).
 
